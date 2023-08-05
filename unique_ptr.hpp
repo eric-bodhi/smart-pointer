@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 
 template <typename T>
@@ -39,6 +41,10 @@ public:
         }
 
         return *this;
+    }
+    T &operator*()
+    {
+        return *ptr;
     }
 
     const T &operator*() const

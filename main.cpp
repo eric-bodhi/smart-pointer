@@ -1,5 +1,5 @@
 #include <iostream>
-#include "smart-pointer.cpp"
+#include "unique_ptr.hpp"
 
 struct Foo {
     int x = 10;
