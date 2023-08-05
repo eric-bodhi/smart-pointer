@@ -1,6 +1,5 @@
 #include <iostream>
 #include "unique_ptr.hpp"
-#include <vector>
 
 struct Foo {
     int x = 10;
