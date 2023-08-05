@@ -7,7 +7,7 @@ private:
     T *ptr;
 
 public:
-    UniquePtr(T *rawPtr = nullptr) : ptr(rawPtr)
+    explicit UniquePtr(T *rawPtr = nullptr) : ptr(rawPtr)
     {
         std::cout << "Ptr constructed"
                   << "\n";
@@ -41,12 +41,18 @@ public:
         return *this;
     }
 
-    T &operator*()
+    const T &operator*() const
     {
         return *ptr;
     }
 
     T *get()
+    {
+        return ptr;
+    }
+
+    // Const version of get()
+    const T *get() const
     {
         return ptr;
     }
