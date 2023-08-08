@@ -1,0 +1,5 @@
+# ninja log v5
+187	219	1691439587736558993	smart_pointer	25edf1cccfe7122f
+0	187	1691439587704557746	CMakeFiles/smart_pointer.dir/main.cpp.o	c25b6b665a41f047
+1	193	1691440662729834594	CMakeFiles/smart_pointer.dir/main.cpp.o	c25b6b665a41f047
+193	224	1691440662761835994	smart_pointer	25edf1cccfe7122f

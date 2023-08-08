@@ -14,7 +14,7 @@ public:
     }
 
     ~UniquePtr() {
-        delete ptr;
+        delete[] ptr;
         std::cout << "Ptr deconstructed"
                   << "\n";
     }
@@ -51,6 +51,14 @@ public:
     // Const version of get()
     const T* get() const {
         return ptr;
+    }
+
+    T& operator[](size_t index) const {
+        return ptr[index];
+    }
+
+    void swap(UniquePtr<T>& other) noexcept {
+        std::swap(ptr, other.ptr);
     }
 };
 
