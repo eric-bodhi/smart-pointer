@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <type_traits>
 
 template <typename T>
 class UniquePtr {
@@ -62,7 +63,13 @@ public:
     }
 };
 
+template<typename T>
+UniquePtr<std::remove_extent_t<T>> newUnique(std::size_t n) requires (std::is_array_v<T>) {
+    using J = std::remove_extent_t<T>;
+    return UniquePtr<J>({ new J[n]{} });
+}
+
 template <typename T, typename... Args>
-UniquePtr<T> newUnique(Args&&... args) {
+UniquePtr<T> newUnique(Args&&... args) requires (!std::is_array_v<T>) {
     return UniquePtr<T>(new T(std::forward<Args>(args)...));
 }

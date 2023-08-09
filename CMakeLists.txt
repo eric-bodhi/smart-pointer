@@ -7,5 +7,4 @@ include_directories(.)
 
 add_executable(smart_pointer
         main.cpp
-        unique_ptr.hpp
-)
+        unique_ptr.hpp)

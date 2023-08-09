@@ -11,6 +11,10 @@ public:
 };
 
 int main() {
+    auto ptr1 = newUnique<int[]>(10);
+    ptr1[0] = 10;
+    std::cout << ptr1[0] << "\n";
+
     auto ptr = newUnique<int>(100);
     std::cout << *ptr << "\n";
 
