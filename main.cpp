@@ -11,27 +11,10 @@ public:
 };
 
 int main() {
-    auto ptr1 = newUnique<int[]>(10);
-    ptr1[0] = 10;
-    std::cout << ptr1[0] << "\n";
-
-    auto ptr = newUnique<int>(100);
-    std::cout << *ptr << "\n";
-
-    auto ptr2 = std::move(ptr);
-    std::cout << *ptr2 << "\n";
-
-    auto myPtr = newUnique<std::string>("Goodbye");
-    std::cout << *myPtr << "\n";
-
-    auto myPtr2 = newUnique<std::string>("Hello");
-    std::cout << *myPtr2 << "\n";
-
-    myPtr.swap(myPtr2);
-    std::cout << *myPtr << "\n";
-    std::cout << *myPtr2 << "\n";
-
-    auto fooPtr = newUnique<Foo>(10, 20);
-    std::cout << fooPtr.get()->y << "\n";
+    auto arr = newUnique<int[]>(10);
+    auto arr2 = newUnique<int[]>(20);
+    arr[0] = 10;
+    arr.swap(arr2);
+    std::cout << arr2[0] << "\n";
     return 0;
 }
