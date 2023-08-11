@@ -120,21 +120,21 @@ public:
 };
 
 template <typename T>
-struct RemoveExtent {
-    using Type = T;
+struct remove_extent {
+    using type = T;
 };
 
 template <typename T>
-struct RemoveExtent<T[]> {
-    using Type = T;
+struct remove_extent<T[]> {
+    using type = T;
 };
 
 template <typename T>
-using RemoveExtentT = typename RemoveExtent<T>::Type;
+using remove_extent_t = typename remove_extent<T>::type;
 
 template <typename T>
-UniquePtr<RemoveExtentT<T>[]> newUnique(std::size_t n) requires (std::is_array_v<T>) {
-    using J = RemoveExtentT<T>;
+UniquePtr<remove_extent_t<T>[]> newUnique(std::size_t n) requires (std::is_array_v<T>) {
+    using J = remove_extent_t<T>;
     return UniquePtr<J[]>(n);
 }
 
@@ -142,13 +142,4 @@ template <typename T, typename... Args>
 UniquePtr<T> newUnique(Args&&... args) requires (!std::is_array_v<T>) {
     return UniquePtr<T>(new T(std::forward<Args>(args)...));
 }
-
-/*
-template<typename T>
-UniquePtr<std::remove_extent_t<T>> newUnique(std::size_t n) requires (std::is_array_v<T>) {
-    using J = std::remove_extent_t<T>;
-    return UniquePtr<J>({ new J[n]{} });
-}
-*/
-
 
