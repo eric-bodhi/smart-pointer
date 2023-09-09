@@ -142,4 +142,3 @@ template <typename T, typename... Args>
 UniquePtr<T> newUnique(Args&&... args) requires (!std::is_array_v<T>) {
     return UniquePtr<T>(new T(std::forward<Args>(args)...));
 }
-
